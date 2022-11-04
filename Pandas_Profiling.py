@@ -32,21 +32,20 @@ if uploaded_file is not None:
      'What variables do you want to include in the report?',
      ('All variables', 'A subset of variables'))
     
-    if option1=='All Variables':
+if option1=='All Variables':
         df=df
     
-    elif option1=='A subset of variables':
+  elif option1=='A subset of variables':
         var_list=list(df.columns)
         option3=st.sidebar.multiselect(
             'Select variable(s) you want to include in the report.',
             var_list)
         df=df[option3]
-   
-    option2 = st.sidebar.selectbox(
+   option2 = st.sidebar.selectbox(
      'Choose Minimal Mode or Complete Mode',
      ('Minimal Mode', 'Complete Mode'))
 
-    if option2=='Complete Mode':
+if option2=='Complete Mode':
         mode='complete'
         st.sidebar.warning('The default minimal mode disables expensive computations such as correlations and duplicate row detection. Switching to complete mode may cause the app to run overtime or fail for large datasets due to computational limit.')
     elif option2=='Minimal Mode':
@@ -58,12 +57,11 @@ if uploaded_file is not None:
         height=300, 
         width='100%',
         )
-
-    updated = grid_response['data']
-    df1 = pd.DataFrame(updated) 
+updated = grid_response['data']
+df1 = pd.DataFrame(updated) 
      
-         if st.button('Generate Report'):
-        if mode=='complete':
+ if st.button('Generate Report'):
+    if mode=='complete':
             profile=ProfileReport(df,
                 title="User uploaded table",
                 progress_bar=True,
