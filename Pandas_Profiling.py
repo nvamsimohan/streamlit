@@ -34,8 +34,7 @@ if uploaded_file is not None:
     
 if option1=='All Variables':
         df=df
-    
-  elif option1=='A subset of variables':
+   elif option1=='A subset of variables':
         var_list=list(df.columns)
         option3=st.sidebar.multiselect(
             'Select variable(s) you want to include in the report.',
